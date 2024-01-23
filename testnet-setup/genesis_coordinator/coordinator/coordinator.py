@@ -29,6 +29,8 @@ def produce_genesis(config, workspace_path):
 
     genesis = cmds.collect_genesis_txs(config, nodes_data)
 
+    utils.update_genesis_files(nodes_data, genesis)
+
     logging.info(f'Produced genesis')
 
     # TODO update config

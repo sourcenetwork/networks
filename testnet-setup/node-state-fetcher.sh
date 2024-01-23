@@ -2,7 +2,7 @@
 
 set -e
 
-if [ $# -ne 3 ]; then
+if [ $# -ne 2 ]; then
     echo "Usage: node-state-fetcher archiver-server-url moniker"
     exit 1
 fi
