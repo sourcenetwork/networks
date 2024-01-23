@@ -118,8 +118,8 @@ def collect_genesis_txs(config, nodes_data):
         shutil.copy(gentx, dest)
 
     cmd = f'sourcehubd genesis collect-gentxs --home {nodes_data[coordinator]["node_home"]}'
-    genesis = utils.run_stderr(cmd)
-    genesis = json.loads(genesis)
+    utils.run_stderr(cmd)
+    genesis = utils.load_genesis(nodes_data[coordinator]["node_home"])
     return genesis
 
 def archive_node_state(node_data, output_dir):
