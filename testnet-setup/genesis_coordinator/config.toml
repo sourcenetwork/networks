@@ -1,0 +1,31 @@
+chain_id = "sourcehub-testnet1"
+genesis_time = "2024-01-24T00:30:00Z"
+keyring_pwd = "12345678"
+
+[validators.val1]
+gen-credits = ["10000000stake"]
+delegation = "5000000stake"
+coordinator = true
+ip = "10.0.0.1"
+
+[validators.val2]
+gen-credits = ["10000000stake"]
+delegation = "5000000stake"
+ip = "10.0.0.1"
+
+[validators.val3]
+gen-credits = ["10000000stake"]
+delegation = "5000000stake"
+ip = "10.0.0.1"
+
+[admin]
+gen-credits = ["10000000stake", "100000000000000uopen"]
+
+[consensus]
+timeout_propose = "500ms"
+timeout_propose_delta = "500ms"
+timeout_prevote = "1s"
+timeout_prevote_delta = "500ms"
+timeout_precommit = "1s"
+timeout_precommit_delta = "500ms"
+timeout_commit = "1s"
