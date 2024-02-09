@@ -1,0 +1,55 @@
+version: '3.8'
+services:
+
+  postgres:
+    build:
+      dockerfile: postgres.dockerfile
+
+  bdjuno:
+    build:
+      dockerfile: bdjuno.dockerfile
+    depends_on:
+      - postgres
+
+  hasura-postgres:
+    image: postgres:16-alpine
+    environment: 
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: hasura
+  
+  hasura:
+    build:
+      dockerfile: hasura.dockerfile
+    environment:
+      HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:root@postgres:5432/bdjuno
+      HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://postgres:root@hasura-postgres:5432/hasura
+        #HASURA_GRAPHQL_UNAUTHORIZED_ROLE: "anonymous"
+      ACTION_BASE_URL: http://bdjuno:3000
+      HASURA_GRAPHQL_ENABLE_CONSOLE: 'true'
+    depends_on:
+      - hasura-postgres
+      - postgres
+    ports:
+      - 8080:8080
+
+  ui:
+    build:
+      dockerfile: big-dipper.dockerfile
+    ports:
+      - 3000:3000
+    environment:
+      GRAPHQL_URL: http://hasura:8080/v1/graphql
+      GRAPHQL_WS: ws://hasura:8080/v1/graphql
+    depends_on:
+      - hasura
+
+  pgadmin:
+    image: elestio/pgadmin:latest
+    environment:
+      PGADMIN_DEFAULT_EMAIL: root@root.com
+      PGADMIN_DEFAULT_PASSWORD: root
+      PGADMIN_LISTEN_PORT: 8080
+    ports:
+      - 8888:8080
+    volumes:
+      - ./servers.json:/pgadmin4/servers.json

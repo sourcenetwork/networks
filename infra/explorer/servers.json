@@ -1,0 +1,26 @@
+{
+    "Servers": {
+        "1": {
+            "Name": "juno postgres",
+            "Group": "1",
+            "Port": 5432,
+            "Username": "postgres",
+            "Host": "postgres",
+            "SSLMode": "prefer",
+            "MaintenanceDB": "postgres",
+            "PasswordExecCommand": "echo 'root'",
+            "PasswordExecExpiration": 100
+        },
+        "2": {
+            "Name": "hasura postgres",
+            "Group": "1",
+            "Port": 5432,
+            "Username": "postgres",
+            "Host": "hasura-postgres",
+            "SSLMode": "prefer",
+            "MaintenanceDB": "postgres",
+            "PasswordExecCommand": "echo 'root'",
+            "PasswordExecExpiration": 100
+        }
+    }
+}

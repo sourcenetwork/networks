@@ -1,0 +1,12 @@
+[submodule "infra/explorer/bdjuno"]
+	path = infra/explorer/bdjuno
+	url = https://github.com/sourcenetwork/callisto.git
+[submodule "infra/explorer/juno"]
+	path = infra/explorer/juno
+	url = https://github.com/sourcenetwork/_juno.git
+[submodule "infra/explorer/big-dipper-2.0-cosmos"]
+	path = infra/explorer/big-dipper-2.0-cosmos
+	url = https://github.com/sourcenetwork/big-dipper-2.0-cosmos.git
+[submodule "infra/explorer/cosmos-sdk"]
+	path = infra/explorer/cosmos-sdk
+	url = https://github.com/cosmos/cosmos-sdk.git

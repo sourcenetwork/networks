@@ -1,0 +1,11 @@
+groups:
+- name: sourcehub
+  rules:
+  - alert: ConsensusStalled
+    expr: 1 #job:request_latency_seconds:mean5m{job="myjob"} > 0.5
+    for: 10m
+    labels:
+      notify: true
+    annotations:
+      summary: SourceHub hasn't produced a block in 10 minutes
+

@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  prometheus:
+    build:
+      context: prometheus
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus/config:/etc/prometheus/config
+
+  grafana:
+    build: 
+      context: grafana
+    ports:
+      - 3000:3000
+
+  alertmanager:
+    image: prom/alertmanager
+    command: --config.file=/etc/alertmanager/alertmanager.yml --storage.path=/alertmanager/data
+    volumes:
+      - alertmanager_data:/alertmanager/data
+      - ./alertmanager:/etc/alertmanager
+
+volumes:
+  alertmanager_data:
