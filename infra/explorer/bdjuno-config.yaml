@@ -14,10 +14,10 @@ node:
   config:
     rpc:
       client_name: juno
-      address: http://3.90.67.94:26657
+      address: http://34.201.57.62:26657
       max_connections: 20
     grpc:
-      address: 3.90.67.94:9090
+      address: 34.201.57.62:9090
       insecure: true
 
 parsing:

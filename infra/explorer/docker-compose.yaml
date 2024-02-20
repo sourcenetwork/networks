@@ -40,8 +40,8 @@ services:
     ports:
       - 3000:3000
     environment:
-      GRAPHQL_URL: http://hasura:8080/v1/graphql
-      GRAPHQL_WS: ws://hasura:8080/v1/graphql
+      GRAPHQL_URL: https://gql.explorer.testnet1.source.network/v1/graphql
+      GRAPHQL_WS: ws://gql.explorer.testnet1.source.network/v1/graphql
     depends_on:
       - hasura
 
@@ -55,3 +55,11 @@ services:
       - 8888:8080
     volumes:
       - ./servers.json:/pgadmin4/servers.json
+
+  caddy:
+    image: caddy:2.7
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+    ports:
+      - 80:80
+      - 443:443
